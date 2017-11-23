@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Upload</title>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/jquery.min.js"></script>
+</head>
+<body>
+<h5>万象图片上传</h5>
+<div id="uploadForm">
+    <input id="file" type="file"/>
+    <button id="upload" type="button" onclick="doUpload()">upload</button>
+</div>
+<hr/>
+<div id="app">
+    {{ message }}
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        }
+    })
+    function doUpload(token){
+        var file = $("#file").val();
+        var fileName = getFileName(file);
+        if(fileName == "" || fileName == null){
+            alert("请选择文件");
+            return;
+        }
+        var formData = new FormData($( "#uploadForm" )[0]);
+        $.ajax({
+            url: 'http://gz.file.myqcloud.com/cfJAX_RS/rest/file/upload' ,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'multipart/form-data'
+            },
+            success: function (data) {
+                alert("上传成功");
+            },
+            error: function (data) {
+                alert("上传失败");
+            }
+        });
+
+    }
+    function getFileName(o){
+        var pos=o.lastIndexOf("\\");
+        return o.substring(pos+1);
+    }
+</script>
+</html>

@@ -1,0 +1,18 @@
+{
+  "port" : 8081,
+  "db" : {
+    "host" : "localhost",
+    "user" : "newhouse_rw",
+    "password" : "f3ea92d38cc",
+    "database" : "newhouse_shengtai",
+    "port" : 8888
+  },
+  "oldDb" : {
+    "host" : "10.16.41.184",
+    "user" : "newhouse",
+    "password" : "L3GGrrc+5opo7F6",
+    "database" : "newhouse",
+    "port" : 3306
+  }
+
+}
