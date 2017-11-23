@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Index</title>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/jquery.min.js"></script>
+</head>
+<body>
+<!--<div id="app">-->
+<!--{{ message }}-->
+<!--</div>-->
+<!--<h1>Hello Socket.io</h1>-->
+<input type="text" id="text1" />
+<input type="submit" id="submit1" value="submit"/>
+</body>
+<script>
+    $("#submit1").click(function(){
+        var nick = $("#text1").val();
+        modifyNick(nick);
+    });
+    function modifyNick(name) {
+        $.ajax({
+            url: "https://u.focus.cn/api/v1/user/nick",
+            type: "POST",
+            data: {
+                type: "nick",
+                nick: name
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function (data) {
+                alert(JSON.stringify(data));
+            }
+        });
+    }
+
+</script>
+</html>

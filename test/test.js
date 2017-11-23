@@ -1,5 +1,5 @@
 var md5 = require("md5");
-var Util = require("./util/Util");
+var Util = require("./../util/Util");
 var request = require("request");
 
 var name = "zhengzhoujingjigongsi";

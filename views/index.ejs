@@ -1,39 +1,14 @@
 <html>
 <head>
    <title>Index</title>
-   <script src="javascripts/vue.min.js"></script>
    <script src="javascripts/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+   <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-    <!--<div id="app">-->
-        <!--{{ message }}-->
-    <!--</div>-->
-    <!--<h1>Hello Socket.io</h1>-->
-    <input type="text" id="text1" />
-    <input type="submit" id="submit1" value="submit"/>
+   <div id="banner">welcome to the magic page!</div>
 </body>
 <script>
-    $("#submit1").click(function(){
-        var nick = $("#text1").val();
-        modifyNick(nick);
-    });
-    function modifyNick(name) {
-        $.ajax({
-            url: "https://u.focus.cn/api/v1/user/nick",
-            type: "POST",
-            data: {
-                type: "nick",
-                nick: name
-            },
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            success: function (data) {
-                alert(JSON.stringify(data));
-            }
-        });
-    }
-
+   $('#banner').addClass('animated jello');
 </script>
 </html>

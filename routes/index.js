@@ -14,4 +14,9 @@ router.get('/upload', function(req, res, next) {
     res.render("upload");
 });
 
+router.get('/check', function(req, res, next) {
+    res.render("checkCSRF");
+});
+
+
 module.exports = router;
