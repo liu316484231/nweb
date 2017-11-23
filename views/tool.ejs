@@ -8,13 +8,13 @@
 <script>
     $("#submit").click(function () {
         var pwd = prompt("enter the pwd");
-        $.get("//house-sv-base.focus.cn/clean/updateCityDirectoryInfo?pwd=" + pwd, function (data) {
+        $.get("//house-sv-base.focus.cn/tool/updateCityDirectoryInfo?pwd=" + pwd, function (data) {
             if(data.code != 1){
                 alert(data.msg);
             }
         });
         var t = setInterval(function(){
-            $.get("//house-sv-base.focus.cn/clean/progress",function (res) {
+            $.get("//house-sv-base.focus.cn/tool/progress",function (res) {
                 $("#progress").text(res.data);
                 if(res.data == "101%"){
                     $("#progress").text("done");
