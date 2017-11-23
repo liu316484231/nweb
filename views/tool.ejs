@@ -3,7 +3,7 @@
 <body>
 <h2>Inner Tool</h2>
 <button id="submit">Update CityDirectory</button>Progress:
-<span id="progress">0%</span>
+<!--<span id="progress">0%</span>-->
 </body>
 <script>
     $("#submit").click(function () {
@@ -13,14 +13,14 @@
                 alert(data.msg);
             }
         });
-        var t = setInterval(function(){
-            $.get("//house-sv-base.focus.cn/tool/progress",function (res) {
-                $("#progress").text(res.data);
-                if(res.data == "101%"){
-                    $("#progress").text("done");
-                }
-            });
-        }, 5000);
+//        var t = setInterval(function(){
+//            $.get("//house-sv-base.focus.cn/tool/progress",function (res) {
+//                $("#progress").text(res.data);
+//                if(res.data == "101%"){
+//                    $("#progress").text("done");
+//                }
+//            });
+//        }, 5000);
     });
 </script>
 </html>
