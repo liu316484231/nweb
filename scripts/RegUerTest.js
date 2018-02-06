@@ -6,28 +6,31 @@ var fs = require("fs");
 
 var userNameList = [];
 
-for(var i = 1; i < 81; i++){
-    var userName;
-    if(i >= 1 && i < 10) {
-        userName = "oversea" + "000" + i;
-    }else{
-        userName = "oversea" + "00" + i;
-    }
-    userNameList.push(userName);
+for(var i = 1; i <= 6; i++){
+    userNameList.push({
+        userName : "zhengzhou" + i,
+        password : "mima" + i
+    });
 }
 
 console.log(userNameList);
 
-async.eachSeries(userNameList, function(userName, callback){
-    var pwd = Util.genPwd();
-    fs.appendFileSync("./info.txt", userName + "/" + pwd + "\n");
-    regUser(userName, pwd, function(err, body){
+async.eachSeries(userNameList, function(obj, callback){
+    regUser(obj.userName, obj.password, function(err, body){
         if(err){
             console.log(err);
             callback(err);
         }
-        console.log("register " + userName + " success--");
-        console.log(JSON.stringify(body));
+        console.log("register " + obj.userName + " success--");
+        console.log(body);
+        body = JSON.parse(body);
+        var uid;
+        if(body.data == null){
+            uid = "昵称重复";
+        }else{
+            uid = body.data.uid;
+        }
+        fs.appendFileSync("./info.txt", uid + "/" + obj.userName + "/" + obj.password + "\n");
         callback();
     });
 },function(err){
